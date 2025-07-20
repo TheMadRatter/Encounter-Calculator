@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monster Level Calculator</title>
+  <style>
+    body { font-family: sans-serif; max-width: 400px; margin: 2em auto; }
+    label { display: block; margin-top: 1em; }
+    input[type="number"] { width: 100%; padding: 0.5em; box-sizing: border-box; }
+    #result { font-weight: bold; }
+  </style>
+  <script>
+    /**
+     * Reads the three input values, applies the formula,
+     * and updates the displayed total monster level.
+     */
+    function calculateMonsterLevel() {
+      const players       = parseInt(document.getElementById('players').value, 10) || 0;
+      const enhancements  = parseInt(document.getElementById('enhancements').value, 10) || 0;
+      const levels        = parseInt(document.getElementById('levels').value, 10) || 0;
+      const totalMonsterLevel = players * 2 + enhancements + levels;
+      document.getElementById('result').textContent = totalMonsterLevel;
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      // initialize calculation on load
+      calculateMonsterLevel();
+      // recalculate whenever any input changes
+      document.querySelectorAll('input[type="number"]').forEach(input =>
+        input.addEventListener('input', calculateMonsterLevel)
+      );
+    });
+  </script>
+</head>
+<body>
+  <h1>Monster Level Calculator</h1>
+
+  <label for="players">Number of Total Players</label>
+  <input type="number" id="players" value="0" min="0">
+
+  <label for="enhancements">Number of Total Enhancements</label>
+  <input type="number" id="enhancements" value="0" min="0">
+
+  <label for="levels">Number of Total Levels</label>
+  <input type="number" id="levels" value="0" min="0">
+
+  <p>Total Monster Level: <span id="result">0</span></p>
+</body>
+</html>
