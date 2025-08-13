@@ -18,7 +18,9 @@
       const players       = parseInt(document.getElementById('players').value, 10) || 0;
       const enhancements  = parseInt(document.getElementById('enhancements').value, 10) || 0;
       const levels        = parseInt(document.getElementById('levels').value, 10) || 0;
-      const totalMonsterLevel = players * 2 + enhancements + levels;
+      const mastery = parseInt(document.getElementById('mastery').value, 10) || 0;
+      const familiar = parseInt(document.getElementById('familiar').value, 10) || 0;
+      const totalMonsterLevel = players * 2 + enhancements + levels + mastery*2 + familiar;
       document.getElementById('result').textContent = totalMonsterLevel;
     }
     window.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +43,12 @@
   <input type="number" id="enhancements" value="0" min="0">
 
   <label for="levels">Number of Total Levels</label>
+  <input type="number" id="levels" value="0" min="0">
+
+  <label for="mastery">Mastery Ranks</label>
+  <input type="number" id="levels" value="0" min="0">
+
+  <label for="familiar">Familiar Ranks</label>
   <input type="number" id="levels" value="0" min="0">
 
   <p>Total Monster Level: <span id="result">0</span></p>
